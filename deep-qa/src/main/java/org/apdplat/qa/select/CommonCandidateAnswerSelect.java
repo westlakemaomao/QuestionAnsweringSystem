@@ -45,6 +45,10 @@ public class CommonCandidateAnswerSelect implements CandidateAnswerSelect {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommonCandidateAnswerSelect.class);
 
+    /*
+     * (non-Javadoc)返回的是
+     * deprecated
+    
     @Override
     public void select(Question question, Evidence evidence) {
         CandidateAnswerCollection candidateAnswerCollection = new CandidateAnswerCollection();
@@ -71,6 +75,39 @@ public class CommonCandidateAnswerSelect implements CandidateAnswerSelect {
                 }
             }
         }
+        evidence.setCandidateAnswerCollection(candidateAnswerCollection);
+    }
+     */
+    @Override
+    public void select(Question question, Evidence evidence) {
+        CandidateAnswerCollection candidateAnswerCollection = new CandidateAnswerCollection();
+
+//        List<Word> words = WordParser.parse(evidence.getTitle() + evidence.getSnippet());
+//        for (Word word : words) {
+//        	System.out.println(word.getText());
+//            if (word.getText().length() < 2){
+//                LOG.debug("忽略长度小于2的候选答案："+word);
+//                continue;
+//            }
+//            if(word.getPartOfSpeech().getPos().toLowerCase().startsWith(question.getQuestionType().getPos().toLowerCase())){
+//                CandidateAnswer answer = new CandidateAnswer();
+//                answer.setAnswer(word.getText());
+//                candidateAnswerCollection.addAnswer(answer);
+//                LOG.debug("成为候选答案："+word);
+//            }
+//            //处理人名
+//            else if(question.getQuestionType().getPos().equals("nr") && word.getPartOfSpeech()==PartOfSpeech.I){
+//                if(PersonName.is(word.getText())){
+//                    CandidateAnswer answer = new CandidateAnswer();
+//                    answer.setAnswer(word.getText());
+//                    candidateAnswerCollection.addAnswer(answer);
+//                    LOG.debug("成为候选答案："+word);
+//                }
+//            }
+//        }
+        CandidateAnswer answer = new CandidateAnswer();
+        answer.setAnswer(evidence.getSnippet());
+        candidateAnswerCollection.addAnswer(answer);
         evidence.setCandidateAnswerCollection(candidateAnswerCollection);
     }
 

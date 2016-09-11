@@ -28,7 +28,7 @@ import org.apdplat.word.segmentation.Word;
 /**
  * 证据由title和snippet组成 对于同一个问题来说，不同的证据的重要性是不一样的，所以证据有分值 证据有多个候选答案
  *
- * @author 杨尚川
+ * @author yym
  */
 public class Evidence {
 

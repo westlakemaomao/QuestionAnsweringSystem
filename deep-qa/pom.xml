@@ -12,31 +12,7 @@
     <description>
         deep-qa是一个Java实现的人机问答系统，能够自动分析问题并给出最佳答案。
     </description>
-    <organization>
-        <name>APDPlat</name>
-        <url>http://apdplat.org/</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
-            <url>http://www.gnu.org/licenses/gpl.html</url>
-        </license>
-    </licenses>
-    <inceptionYear>2014</inceptionYear>
-    <scm>
-        <url>https://github.com/ysc/QuestionAnsweringSystem</url>
-        <connection>scm:git:git://github.com/ysc/QuestionAnsweringSystem.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/ysc/QuestionAnsweringSystem.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-    <developers>
-        <developer>
-            <name>杨尚川</name>
-            <email>ysc@apdplat.org</email>
-            <url>http://yangshangchuan.iteye.com</url>
-        </developer>
-    </developers>
-    
+ 
     <build>
         <plugins>
             <!-- 编译插件, 设定JDK版本 -->

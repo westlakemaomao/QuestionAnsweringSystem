@@ -136,6 +136,8 @@ public class Question {
      */
     public List<CandidateAnswer> getAllCandidateAnswer() {
         Map<String, Double> map = new HashMap<>();
+        System.out.println("evidences.size():"+evidences.size());
+        
         for (Evidence evidence : evidences) {
             for (CandidateAnswer candidateAnswer : evidence.getCandidateAnswerCollection().getAllCandidateAnswer()) {
                 Double score = map.get(candidateAnswer.getAnswer());
@@ -149,12 +151,16 @@ public class Question {
                 map.put(candidateAnswer.getAnswer(), score);
             }
         }
+        System.out.println("candidateAnswer.map:"+map.toString());
 
         //组装候选答案
         List<CandidateAnswer> candidateAnswers = new ArrayList<>();
         for (Map.Entry<String, Double> entry : map.entrySet()) {
             String answer = entry.getKey();
-            Double score = entry.getValue();
+//            Double score = entry.getValue();
+            Double score = 0.8;
+            System.out.println("answer:"+answer);
+            System.out.println("score:"+score);
             if (answer != null && score != null && score > 0 && score < Double.MAX_VALUE) {
                 CandidateAnswer candidateAnswer = new CandidateAnswer();
                 candidateAnswer.setAnswer(answer);

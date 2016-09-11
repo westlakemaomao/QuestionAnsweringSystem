@@ -54,7 +54,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 通用问答系统实现
  *
- * @author 杨尚川
+ * @author yym
  */
 public class CommonQuestionAnsweringSystem extends QuestionAnsweringSystemImpl {
 
@@ -76,64 +76,64 @@ public class CommonQuestionAnsweringSystem extends QuestionAnsweringSystemImpl {
         super.setDataSource(dataSource);
 
         //3、候选答案提取器(不可以同时使用多个提取器)
+        
         CandidateAnswerSelect candidateAnswerSelect = new CommonCandidateAnswerSelect();
-
         super.setCandidateAnswerSelect(candidateAnswerSelect);
 
         //4、证据评分组件(可以同时使用多个组件)
         //***********************
         //4.1、TermMatch评分组件
-        EvidenceScore termMatchEvidenceScore = new TermMatchEvidenceScore();
-        termMatchEvidenceScore.setScoreWeight(scoreWeight);
-        //4.2、二元模型评分组件
-        EvidenceScore bigramEvidenceScore = new BigramEvidenceScore();
-        bigramEvidenceScore.setScoreWeight(scoreWeight);
+//        EvidenceScore termMatchEvidenceScore = new TermMatchEvidenceScore();
+//        termMatchEvidenceScore.setScoreWeight(scoreWeight);
+//        //4.2、二元模型评分组件
+//        EvidenceScore bigramEvidenceScore = new BigramEvidenceScore();
+//        bigramEvidenceScore.setScoreWeight(scoreWeight);
         //4.3、跳跃二元模型评分组件
         EvidenceScore skipBigramEvidenceScore = new SkipBigramEvidenceScore();
         skipBigramEvidenceScore.setScoreWeight(scoreWeight);
         //4.4、组合证据评分组件
         CombinationEvidenceScore combinationEvidenceScore = new CombinationEvidenceScore();
-        combinationEvidenceScore.addEvidenceScore(termMatchEvidenceScore);
-        combinationEvidenceScore.addEvidenceScore(bigramEvidenceScore);
+//        combinationEvidenceScore.addEvidenceScore(termMatchEvidenceScore);
+//        combinationEvidenceScore.addEvidenceScore(bigramEvidenceScore);
         combinationEvidenceScore.addEvidenceScore(skipBigramEvidenceScore);
-
         super.setEvidenceScore(combinationEvidenceScore);
+
 
         //5、候选答案评分组件(可以同时使用多个组件)
         //***********************
         //5.1、词频评分组件
-        CandidateAnswerScore termFrequencyCandidateAnswerScore = new TermFrequencyCandidateAnswerScore();
-        termFrequencyCandidateAnswerScore.setScoreWeight(scoreWeight);
-        //5.2、词距评分组件
-        CandidateAnswerScore termDistanceCandidateAnswerScore = new TermDistanceCandidateAnswerScore();
-        termDistanceCandidateAnswerScore.setScoreWeight(scoreWeight);
-        //5.3、词距评分组件(只取候选词和问题词的最短距离)
-        CandidateAnswerScore termDistanceMiniCandidateAnswerScore = new TermDistanceMiniCandidateAnswerScore();
-        termDistanceMiniCandidateAnswerScore.setScoreWeight(scoreWeight);
-        //5.4、文本对齐评分组件
-        CandidateAnswerScore textualAlignmentCandidateAnswerScore = new TextualAlignmentCandidateAnswerScore();
-        textualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
-        //5.5、文本对齐评分组件
-        CandidateAnswerScore moreTextualAlignmentCandidateAnswerScore = new MoreTextualAlignmentCandidateAnswerScore();
-        moreTextualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
-        //5.6、回带文本对齐评分组件
-        CandidateAnswerScore rewindTextualAlignmentCandidateAnswerScore = new RewindTextualAlignmentCandidateAnswerScore();
-        rewindTextualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        CandidateAnswerScore termFrequencyCandidateAnswerScore = new TermFrequencyCandidateAnswerScore();
+//        termFrequencyCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        //5.2、词距评分组件
+//        CandidateAnswerScore termDistanceCandidateAnswerScore = new TermDistanceCandidateAnswerScore();
+//        termDistanceCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        //5.3、词距评分组件(只取候选词和问题词的最短距离)
+//        CandidateAnswerScore termDistanceMiniCandidateAnswerScore = new TermDistanceMiniCandidateAnswerScore();
+//        termDistanceMiniCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        //5.4、文本对齐评分组件
+//        CandidateAnswerScore textualAlignmentCandidateAnswerScore = new TextualAlignmentCandidateAnswerScore();
+//        textualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        //5.5、文本对齐评分组件
+//        CandidateAnswerScore moreTextualAlignmentCandidateAnswerScore = new MoreTextualAlignmentCandidateAnswerScore();
+//        moreTextualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
+//        //5.6、回带文本对齐评分组件
+//        CandidateAnswerScore rewindTextualAlignmentCandidateAnswerScore = new RewindTextualAlignmentCandidateAnswerScore();
+//        rewindTextualAlignmentCandidateAnswerScore.setScoreWeight(scoreWeight);
         //5.7、热词评分组件
         CandidateAnswerScore hotCandidateAnswerScore = new HotCandidateAnswerScore();
         hotCandidateAnswerScore.setScoreWeight(scoreWeight);
         //5.8、组合候选答案评分组件
+      
         CombinationCandidateAnswerScore combinationCandidateAnswerScore = new CombinationCandidateAnswerScore();
-        combinationCandidateAnswerScore.addCandidateAnswerScore(termFrequencyCandidateAnswerScore);
-        combinationCandidateAnswerScore.addCandidateAnswerScore(termDistanceCandidateAnswerScore);
-        combinationCandidateAnswerScore.addCandidateAnswerScore(termDistanceMiniCandidateAnswerScore);
-        combinationCandidateAnswerScore.addCandidateAnswerScore(textualAlignmentCandidateAnswerScore);
-        combinationCandidateAnswerScore.addCandidateAnswerScore(moreTextualAlignmentCandidateAnswerScore);
+//        combinationCandidateAnswerScore.addCandidateAnswerScore(termFrequencyCandidateAnswerScore);
+//        combinationCandidateAnswerScore.addCandidateAnswerScore(termDistanceCandidateAnswerScore);
+//        combinationCandidateAnswerScore.addCandidateAnswerScore(termDistanceMiniCandidateAnswerScore);
+//        combinationCandidateAnswerScore.addCandidateAnswerScore(textualAlignmentCandidateAnswerScore);
+//        combinationCandidateAnswerScore.addCandidateAnswerScore(moreTextualAlignmentCandidateAnswerScore);
         //combinationCandidateAnswerScore.addCandidateAnswerScore(rewindTextualAlignmentCandidateAnswerScore);
         combinationCandidateAnswerScore.addCandidateAnswerScore(hotCandidateAnswerScore);
-
         super.setCandidateAnswerScore(combinationCandidateAnswerScore);
-
+   
         //6、问题分类器
         PatternMatchStrategy patternMatchStrategy = new PatternMatchStrategy();
         patternMatchStrategy.addQuestionPattern(QuestionPattern.Question);
@@ -147,7 +147,6 @@ public class CommonQuestionAnsweringSystem extends QuestionAnsweringSystemImpl {
         PatternMatchResultSelector patternMatchResultSelector = new DefaultPatternMatchResultSelector();
         QuestionClassifier questionClassifier = new PatternBasedMultiLevelQuestionClassifier(patternMatchStrategy, patternMatchResultSelector);
         super.setQuestionClassifier(questionClassifier);
-
         LOG.info("问答系统构造完成");
     }
 
